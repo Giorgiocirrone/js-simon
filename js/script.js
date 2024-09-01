@@ -65,7 +65,9 @@ form.addEventListener('submit', event => {
     event.preventDefault();//blocco l'invio del form 
     const userGuesses = [];
 
+    messageElement.innerText = '';
 
+    //raccolta dati 
     for (let i = 0; i < inputFields.length; i++) {
         const input = inputFields[i];//scorro 
 
@@ -88,6 +90,30 @@ form.addEventListener('submit', event => {
 
     //validazione 
     console.log(userGuesses);
+
+
+    //controllo dei dati 
+
+
+    const correctNumbers = [];
+    for (let i = 0; i < userGuesses.length; i++) {
+
+        if (numbers.includes(guess)) correctNumbers.push(guess);
+    }
+
+
+    //fase di out put 
+
+    messageElement.classList.remove('text-danger');
+
+
+    if (correctNumbers.length == numbers.length) messageElement.classList.add('text-success');
+    messageElement.innerText = ` hai infovinato ${correctNumbers.length} numeri! (${correctNumbers})`;
+
+
+
+
+
 
 
 }) 
